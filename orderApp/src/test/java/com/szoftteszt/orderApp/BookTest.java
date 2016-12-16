@@ -9,10 +9,11 @@ import org.junit.Test;
 public class BookTest {
 	
 	private Book book;
+	private Price price;
 	
 	@Before
 	public void setUp() throws Exception {
-		Price price = new Price(2000.0, Currency.HUF);
+		price = new Price(2000.0, Currency.HUF);
 		book = new Book("1234", "Tesztkönyv", "Bekő Tóni", "krimi", price);
 	}
 
@@ -33,7 +34,7 @@ public class BookTest {
 	}
 
 	@Test
-	public void testGetPrice(Price price) {
+	public void testGetPrice() {
 		assertEquals(price, book.getPrice());
 	}
 

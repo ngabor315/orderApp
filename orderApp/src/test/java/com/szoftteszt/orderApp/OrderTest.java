@@ -9,11 +9,13 @@ import org.junit.Test;
 public class OrderTest {
 
 	private Order order;
+	private Price price;
+	private Book book;
 	
 	@Before
 	public void setUp() throws Exception {
-		Price price = new Price(1000.0, Currency.HUF);
-		Book book = new Book("1234", "Tesztkönyv", "Bekő Tóni", "krimi", price);
+		price = new Price(1000.0, Currency.HUF);
+		book = new Book("1234", "Tesztkönyv", "Bekő Tóni", "krimi", price);
 		order = new Order(1, "Har Mónika", "Zene utca 2.", "ajándék könyvjelzővel", book);
 	}
 
@@ -57,7 +59,7 @@ public class OrderTest {
 
 	@Test
 	public void testGetBook() {
-		assertEquals("Tesztkönyv", order.getBook());
+		assertEquals(book, order.getBook());
 	}
 
 	@Test
@@ -73,8 +75,8 @@ public class OrderTest {
 
 	@Test
 	public void testGetOrderPrice() {
-		Currency usedCurrency = Currency.GBP;
-		assertEquals("1000 GBP", order.getOrderPrice(usedCurrency));
+		Currency usedCurrency = Currency.HUF;
+		assertEquals("1000.0 HUF", order.getOrderPrice(usedCurrency));
 	}
 
 }
